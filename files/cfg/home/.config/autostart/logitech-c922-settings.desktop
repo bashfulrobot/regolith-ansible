@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=v4l2-ctl --set-ctrl brightness=128; v4l2-ctl --set-ctrl contrast=100; v4l2-ctl --set-ctrl focus_auto=0; v4l2-ctl --set-ctrl white_balance_temperature_auto=0; v4l2-ctl --set-ctrl=white_balance_temperature=6000; v4l2-ctl --set-ctrl=sharpness=153; v4l2-ctl --set-ctrl=saturation=151; v4l2-ctl --set-ctrl=gain=0; v4l2-ctl --set-ctrl=exposure_auto=1; v4l2-ctl --set-ctrl=exposure_absolute=65
+Hidden=false
+NoDisplay=false
+Icon=camera
+X-GNOME-Autostart-enabled=true
+Name[en_CA]=logitech-c922-settings
+Name=logitech-c922-settings
+Comment[en_CA]=
+Comment=

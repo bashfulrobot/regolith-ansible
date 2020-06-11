@@ -1,0 +1,40 @@
+- hosts: localhost
+  become: true
+  vars_files:
+    - config.yml
+  pre_tasks:
+    - name: Update Repositories
+      apt: update_cache=yes
+      changed_when: false
+  tasks:
+    ### Update entire system
+    - include: tasks/installations/update-system.yml
+    ### Install Software
+    - include: tasks/installations/apt-ppas.yml
+    - include: tasks/installations/apt-dependencies.yml
+    - include: tasks/installations/apt-docker.yml
+    - include: tasks/installations/apt.yml
+    # This must come after the apt.yml due to dependencies
+    - include: tasks/installations/snap.yml
+    - include: tasks/installations/pip.yml
+    - include: tasks/installations/flatpak.yml
+    # This must come after the pip.yml due to dependencies
+    # - include: tasks/installations/gh-release.yml
+    - include: tasks/installations/screenshot.yml
+    ### System Settings
+    - include: tasks/syscfg/sudo.yml
+    - include: tasks/syscfg/sysctl.yml
+    - include: tasks/syscfg/nsswitch.yml
+    - include: tasks/syscfg/services.yml
+    - include: tasks/syscfg/timezone.yml
+    - include: tasks/syscfg/ufw.yml
+    ### User Cfg
+    - include: tasks/user/users.yml
+    - include: tasks/user/folders.yml
+    - include: tasks/user/dotfiles.yml
+    - include: tasks/user/startup.yml
+    - include: tasks/user/cron.yml
+    - include: tasks/user/shell.yml
+    - include: tasks/user/dconf.yml
+    - include: tasks/user/permissions.yml
+    - include: tasks/user/theme.yml

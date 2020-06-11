@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/seaf-cli start
+Hidden=false
+NoDisplay=false
+Icon=folder-download
+X-GNOME-Autostart-enabled=true
+Name[en_CA]=Seafile
+Name=Seafile
+Comment[en_CA]=
+Comment=

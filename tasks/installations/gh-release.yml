@@ -1,0 +1,69 @@
+- name: Get latest release version of COD from GitHub
+  github_release:
+    user: dim-an
+    repo: cod
+    action: latest_release
+  register: cod_release
+- name: Download & Extract COD Tgz #noqa 503
+  unarchive:
+    src: "https://github.com/dim-an/cod/releases/download/{{ cod_release.tag }}/cod-Linux.tgz"
+    dest: /usr/local/bin
+    # Ditch the containing folder on extraction
+    extra_opts: [--strip-components=1]
+    remote_src: yes
+#   when: cod_release.changed
+
+- name: Get latest release version of comics-downloader from GitHub
+  github_release:
+    user: Girbons
+    repo: comics-downloader
+    action: latest_release
+  register: comicdl_release
+- name: Download comics-downloader
+  get_url:
+    url: https://github.com/Girbons/comics-downloader/releases/download/{{ comicdl_release.tag }}/comics-downloader
+    dest: /usr/local/bin/comics-downloader
+    mode: '0755'
+  # when: comicdl_release.changed
+
+- name: Get latest release version of Terraform from GitHub
+  github_release:
+    user: hashicorp
+    repo: terraform
+    action: latest_release
+  register: terraform_release
+- name: Clean up Terraform version number
+  set_fact:
+    terraform_version: "{{ terraform_release.tag | regex_replace('^v', '') }}"
+- name: Download & Extract Terraform Tgz
+  unarchive:
+    src: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
+    dest: /usr/local/bin
+    remote_src: yes
+  # when: terraform_release.changed
+
+- name: Get latest release version of Gh ClI from GitHub
+  github_release:
+    user: cli
+    repo: cli
+    action: latest_release
+  register: gh_cli_release
+- name: Get GH CLI version number w/o V
+  set_fact:
+    gh_cli_version: "{{ gh_cli_release.tag | regex_replace('^v', '') }}"
+- name: Install GH CLI .deb package from Github.
+  apt:
+    deb: https://github.com/cli/cli/releases/download/{{ gh_cli_release.tag }}/gh_{{ gh_cli_version }}_linux_amd64.deb
+
+- name: Get latest release version of Todoist from GitHub
+  github_release:
+    user: KryDos
+    repo: todoist-linux
+    action: latest_release
+  register: todoist_release
+- name: Get Todoist version number w/o V
+  set_fact:
+    todoist_version: "{{ todoist_release.tag | regex_replace('^v', '') }}"
+- name: Install Todoist .deb package from Github.
+  apt:
+    deb: https://github.com/KryDos/todoist-linux/releases/download/{{ todoist_version }}/Todoist_{{ todoist_version }}.0_amd64.deb

@@ -1,0 +1,17 @@
+- name: Create a directory if it does not exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+  with_items:
+    - "{{ my_home }}/ubuntu/scratch"
+    - "{{ my_home }}/tmp"
+    - "{{ my_home }}/sync/gdrive-br"
+    - "{{ my_home }}/sync/gdrive-telus"
+    - "{{ my_home }}/sync/telus-shared"
+    - "{{ my_home }}/private"
+    - "{{ my_home }}/snap/ncspot/current/.config/ncspot/"
+    - "{{ my_home }}/.config/autostart/"
+    - "{{ my_home }}/.local/share/backgrounds"

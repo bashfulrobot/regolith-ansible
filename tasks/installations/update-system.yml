@@ -1,0 +1,5 @@
+### Initial Update
+- name: Updating Base System
+  apt:
+    update_cache: yes
+    upgrade: dist

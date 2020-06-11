@@ -1,0 +1,123 @@
+# Replaced with flameshot and helper script
+- name: Removing gnome-screenshot - APT
+  apt:
+    pkg:
+      - gnome-screenshot
+    state: absent
+
+- name: Installing Services - APT
+  apt:
+    pkg:
+      - snapd
+      - openssh-server
+      - profile-sync-daemon
+      - lxd
+    state: present
+
+- name: Installing System Packages - APT
+  apt:
+    pkg:
+      - ubuntu-restricted-extras
+      - gnome-firmware
+      - python3-pip
+      - snapd-xdg-open
+      - gnupg-agent
+      - pulseaudio
+      - pavucontrol
+      - preload
+      - dex
+    state: present
+
+- name: Installing 3rd Party (PPA) User Applications - APT
+  apt:
+    pkg:
+      - nordvpn
+      - brave-browser
+      - tailscale
+      - peek
+    state: present
+
+- name: Installing Fonts - APT
+  apt:
+    pkg:
+      - ttf-mscorefonts-installer
+      - fonts-emojione
+    state: present
+
+- name: Installing Logitech Support - APT
+  apt:
+    pkg:
+      - solaar
+      - piper
+      - v4l-utils
+    state: present
+
+- name: Installing User Applications - APT
+  apt:
+    pkg:
+      - ncdu
+      - whois
+      - tmux
+      - lftp
+      - htop
+      - celluloid
+      - xclip
+      - flameshot
+      - gnome-calculator
+      - gnome-disk-utility
+      - dlocate
+      - ppa-purge
+      - seafile-cli
+      - dialog
+      - encfs
+      - gocryptfs
+      - bat
+      - seahorse
+      - sirikali
+    state: present
+
+- name: Installing Developer Tools - APT
+  apt:
+    pkg:
+      - git
+      - jq
+      - dh-make
+      - debconf-utils
+      - debhelper
+      - ubuntu-dev-tools
+      - piuparts
+      - schroot
+      - sbuild
+      - uncrustify
+      - devscripts
+      - software-properties-gtk
+      - pylint
+      - gtk-3-examples
+      - libgtk-3-0
+    state: present
+
+- name: Installing i3rocks Modules - APT
+  apt:
+    pkg:
+      - i3xrocks-media-player
+      - i3xrocks-volume
+    state: present
+
+- name: Installing i3rocks Modules (Laptop) - APT
+  tags: laptop
+  apt:
+    pkg:
+      - i3xrocks-wifi
+      - i3xrocks-battery
+      - i3xrocks-temp/
+    state: present
+
+- name: Installing Regolith Looks - APT
+  apt:
+    pkg:
+      - regolith-look-nord
+    state: present
+
+- name: Installing Xmind - APT
+  apt:
+    deb: https://www.xmind.net/xmind/downloads/XMind-2020-for-Linux-amd-64bit-{{ xmind_version }}.deb

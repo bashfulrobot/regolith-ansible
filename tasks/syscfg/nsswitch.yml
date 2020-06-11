@@ -1,0 +1,6 @@
+- name: Fixing .local Name Resolution - Ubuntu
+  replace:
+    path: /etc/nsswitch.conf
+    regexp: '^hosts:(.*)files mdns.*'
+    replace: 'hosts:          files dns mdns4_minimal [NOTFOUND=return] myhostname'
+  become: true

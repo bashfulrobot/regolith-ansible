@@ -1,0 +1,71 @@
+- name: Placing .gitconfig dotfile
+  copy:
+    src: files/cfg/home/.gitconfig
+    dest: "/home/{{ my_username }}/.gitconfig"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
+
+- name: Placing .gitignore dotfile
+  copy:
+    src: files/cfg/home/.gitignore
+    dest: "/home/{{ my_username }}/.gitignore"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
+
+- name: Placing Uncrustify CFG
+  copy:
+    src: files/cfg/home/.config/uncrustify.cfg
+    dest: "/home/{{ my_username }}/.config/uncrustify.cfg"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
+
+- name: Placing Ncspot CFG
+  copy:
+    src: files/cfg/home/snap/ncspot/current/.config/ncspot/config.toml
+    dest: "/home/{{ my_username }}/snap/ncspot/current/.config/ncspot/config.toml"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
+
+- name: Placing .sbuildrc
+  copy:
+    src: files/cfg/home/.sbuildrc
+    dest: "/home/{{ my_username }}/.sbuildrc"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
+
+- name: Placing .mk-sbuild.rc
+  copy:
+    src: files/cfg/home/.mk-sbuild.rc
+    dest: "/home/{{ my_username }}/.mk-sbuild.rc"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
+
+- name: Placing .quiltrc
+  copy:
+    src: files/cfg/home/.quiltrc
+    dest: "/home/{{ my_username }}/.quiltrc"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
+
+- name: Placing .vimrc
+  copy:
+    src: files/cfg/home/.vimrc
+    dest: "/home/{{ my_username }}/.vimrc"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
+
+- name: Placing brave profile-sync-daemon file
+  copy:
+    src: files/cfg/usr/share/psd/browsers/brave-browser
+    dest: "/usr/share/psd/browsers/brave-browser"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0644

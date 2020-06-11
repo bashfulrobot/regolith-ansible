@@ -1,0 +1,59 @@
+- name: Install Snap Packages
+  snap:
+      name:
+          - lxd
+          - ncspot
+          - simplescreenrecorder
+          - bitwarden
+          - bw
+          - icdiff
+          - review-tools
+          - standard-notes
+          - scrcpy
+          - glimpse-editor
+          - telegram-desktop
+          - yakyak
+
+- name: Install Classic Snap Packages
+  snap:
+      name:
+          - go
+          - snapcraft
+          - snapdiff
+          - slack
+          - code-insiders
+          - slack
+      classic: yes
+
+- name: Install Node Snap Package --channel=13/stable --classic
+  snap:
+      name: node
+      channel: 13/stable
+      classic: yes
+
+- name: Install Multipass Snap Package --channel=beta --classic
+  snap:
+      name: multipass
+      channel: beta
+      classic: yes
+
+- name: Install Snap Packages from --channel=edge
+  snap:
+      name:
+          - irccloud
+          - authy
+          - shfmt
+      channel: edge
+
+- name: Install Snap Packages --channel=edge --classic
+  snap:
+      name:
+          - restic
+          - espanso
+      channel: edge
+      classic: yes
+
+- name: Install Hugo Snap Package --channel=extended/edge
+  snap:
+    name: hugo
+    channel: extended/edge

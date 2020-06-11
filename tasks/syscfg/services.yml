@@ -1,0 +1,19 @@
+- name: Enable and Start System Scoped Services
+  systemd:
+    enabled: yes
+    state: started
+    name: "{{ item }}"
+  with_items:
+      - ssh
+      - docker
+      - snapd
+
+# - name: Enable and Start User Scoped Services
+#   systemd:
+#     enabled: yes
+#     state: started
+#     name: "{{ item }}"
+#   with_items:
+#       - "syncthing@{{ my_username }}"
+
+# - debug: msg="{{ result }}"

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Place in: /usr/bin/gnome-screenshot
+/usr/bin/flameshot gui
+exit 0

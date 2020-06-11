@@ -1,0 +1,13 @@
+- name: Enable UFW
+  ufw:
+    state: enabled
+
+- name: Enable SSH Ports
+  ufw:
+    rule: allow
+    name: OpenSSH
+
+# - name: Enable syncthing Ports
+#   ufw:
+#     rule: allow
+#     name: syncthing

@@ -1,0 +1,3 @@
+- name: set timezone to America/Vancouver
+  timezone:
+    name: "{{ my_timezone }}"

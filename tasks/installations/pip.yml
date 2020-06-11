@@ -1,0 +1,7 @@
+- name: Install PIP apps
+  pip:
+    name:
+      - ansible-lint
+      - telegram-send
+      - gcp
+      - github3.py

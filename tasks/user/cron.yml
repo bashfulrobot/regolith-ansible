@@ -1,0 +1,37 @@
+- name: Placing ansible-pull-cron for a laptop.sh
+  tags: laptop
+  copy:
+    src: files/cfg/usr/local/bin/ansible-pull-cron-laptop.sh
+    dest: "/usr/local/bin/ansible-pull-cron.sh"
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Placing ansible-pull-cron.sh for a desktop
+  tags: desktop
+  copy:
+    src: files/cfg/usr/local/bin/ansible-pull-cron-desktop.sh
+    dest: "/usr/local/bin/ansible-pull-cron.sh"
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install Ansible Cron Job (40 Min)
+  cron: user="{{ my_username }}" name="Ansible provision" minute="*/40" job="/usr/local/bin/ansible-pull-cron.sh"
+
+- name: Install Daily Ansible Cron Jobs
+  cron: user="{{ my_username }}" name="Ansible Daily provision" minute="30" hour="7,17" job="/usr/local/bin/ansible-pull-cron.sh"
+
+# - name: Add Ansible Cron Log
+#   file:
+#       path: /home/{{ my_username }}/.ansible-cron
+#       state: touch
+#       owner: root
+#       group: root
+#       mode: 0700
+
+# - name: Tap Ansible Cron Log #noqa 301
+#   shell: date >> /home/{{ my_username }}/.ansible-cron
+
+# - name: Rotate Ansible Cron Log #noqa 301
+#   shell: tail -n5 /home/{{ my_username }}/.ansible-cron > /home/{{ my_username }}/.ansible-cron.tmp && mv /home/{{ my_username }}/.ansible-cron.tmp /home/{{ my_username }}/.ansible-cron #noqa 204

@@ -1,0 +1,15 @@
+- name: Fixing SSH PRIV Key Permissions
+  become: yes
+  file:
+    path: "{{ my_home }}/.ssh/id_rsa"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0600
+
+- name: Fixing SSH PUB Key Permissions
+  become: yes
+  file:
+    path: "{{ my_home }}/.ssh/id_rsa.pub"
+    owner: "{{  my_username }}"
+    group: "{{ my_username }}"
+    mode: 0600

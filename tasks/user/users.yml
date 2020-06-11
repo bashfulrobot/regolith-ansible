@@ -1,0 +1,14 @@
+- name: Adding System Users
+  user:
+    name: "{{ my_username }}"
+    comment: "{{ my_fullname }}"
+    groups: sudo, adm, cdrom, dip, plugdev, lpadmin, sambashare, docker, lxd, audio, sbuild
+    append: yes
+
+- name: Install GH SSH Pub keys
+  authorized_key:
+    user: "{{ my_username }}"
+    state: present
+    key: "https://github.com/{{ item }}.keys"
+  with_items:
+    - "{{ my_github_username }}"
