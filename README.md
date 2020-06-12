@@ -52,4 +52,4 @@ There are two recommended custom Picom (Compton) settings. The fix drops a custo
 
 ## Configuration that differs from default behavior
 
-Any custom settings I have tweaked from default Regolith has a comment with "DK Custom". Do not that this is in Regolith configuration
+Any custom settings I have tweaked from default Regolith has a comment with "DK Custom". Do note that this is in Regolith configuration files, and not in system settings I configure through Ansible.
