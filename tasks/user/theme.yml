@@ -1,3 +1,4 @@
+
 # WHen updating to new look, must delete `~/.Xresources-regolith` first. Careful if any other customizastions end up in there.
 # Will not show up until reboot or you run `regolith-look refresh`
 - name: Set Regolith-look to Nord
@@ -6,15 +7,6 @@
   command: regolith-look set nord && regolith-look refresh
   args:
     creates: "{{ my_home }}/.Xresources-regolith"
-
-# Needs to be run after the refresh
-- name: Setting Wallpaper
-  become: true
-  become_user: "{{ my_username }}"
-  dconf:
-      key: "/org/gnome/desktop/background/picture-uri"
-      value: "'file://{{ my_home }}/.local/share/backgrounds/nord.jpg'"
-      state: present
 
 # Using a custom config due to terminal/Nvidia glitches.
 - name: Custom Picom Config (Nvidia Glitch)
