@@ -7,4 +7,6 @@
       - curl
       - gnupg-agent
       - software-properties-common
+      # Espanso Depemndencies
+      - libnotify-bin
     state: present
