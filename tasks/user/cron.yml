@@ -1,5 +1,6 @@
 - name: Placing ansible-pull-cron for a laptop.sh
-  tags: laptop
+  tags:
+  - laptop
   copy:
     src: files/cfg/usr/local/bin/ansible-pull-cron-laptop.sh
     dest: "/usr/local/bin/ansible-pull-cron.sh"
@@ -8,7 +9,8 @@
     mode: 0755
 
 - name: Placing ansible-pull-cron.sh for a desktop
-  tags: desktop
+  tags:
+  - desktop
   copy:
     src: files/cfg/usr/local/bin/ansible-pull-cron-desktop.sh
     dest: "/usr/local/bin/ansible-pull-cron.sh"

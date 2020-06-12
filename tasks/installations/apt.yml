@@ -104,7 +104,8 @@
     state: present
 
 - name: Installing i3rocks Modules (Laptop) - APT
-  tags: laptop
+  tags:
+  - laptop
   apt:
     pkg:
       - i3xrocks-wifi
