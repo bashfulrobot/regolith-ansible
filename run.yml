@@ -19,7 +19,7 @@
     - include: tasks/installations/pip.yml
     - include: tasks/installations/flatpak.yml
     # This must come after the pip.yml due to dependencies
-    # - include: tasks/installations/gh-release.yml
+    - include: tasks/installations/gh-release.yml
     - include: tasks/installations/screenshot.yml
     ### System Settings
     - include: tasks/syscfg/sudo.yml
