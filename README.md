@@ -12,7 +12,7 @@ Tags are used with these commands to "exclude" tasks for a desktop, laptop, nvid
 
 Examples are: no battery indicator on a desktop panel vs one on a laptop panel.
 
-**Remember Tags are to EXCLUDE, not include.******
+**Remember Tags are to EXCLUDE, not include.**
 
 To run this playbook use:
 
