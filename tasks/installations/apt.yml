@@ -109,7 +109,7 @@
     pkg:
       - i3xrocks-wifi
       - i3xrocks-battery
-      - i3xrocks-temp/
+      - i3xrocks-temp
     state: present
 
 - name: Installing Regolith Looks - APT
