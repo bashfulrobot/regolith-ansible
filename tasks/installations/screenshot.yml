@@ -1,7 +1,46 @@
-- name: Placing Screenshot Script
-  copy:
-    src: files/cfg/usr/bin/gnome-screenshot
-    dest: "/usr/bin/gnome-screenshot"
-    owner: "root"
-    group: "root"
-    mode: 0755
+- name: Disable Gnome Flashback Screenshot
+  become: true
+  become_user: "{{ my_username }}"
+  dconf:
+      key: "/org/gnome/gnome-flashback/screenshot"
+      value: "false"
+      state: present
+
+- name: Disable Old Screenshot Shortcut
+  become: true
+  become_user: "{{ my_username }}"
+  dconf:
+      key: "/org/gnome/settings-daemon/plugins/media-keys/screenshot"
+      # value: "['<Primary><Alt><Super>Calculator']"
+      value: "['']"
+      state: present
+
+# Next four are all needed to create the custom shortcut
+- name: Set Custom Print Binding
+  become: true
+  become_user: "{{ my_username }}"
+  dconf:
+      key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding"
+      value: "'Print'"
+      state: present
+- name: Set Print Binding to Flameshot command
+  become: true
+  become_user: "{{ my_username }}"
+  dconf:
+      key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command"
+      value: "'flameshot gui'"
+      state: present
+- name: Set Flameshot shortcut name
+  become: true
+  become_user: "{{ my_username }}"
+  dconf:
+      key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name"
+      value: "'Flameshot'"
+      state: present
+- name: Set Flameshot shortcut custom binding
+  become: true
+  become_user: "{{ my_username }}"
+  dconf:
+      key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+      value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+      state: present
