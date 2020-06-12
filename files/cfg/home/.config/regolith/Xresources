@@ -1,0 +1,5 @@
+! See available settings with:
+! > xrdb -query
+! Must run to get new changes (or reboot)
+! > regolith-look refresh
+gnome.terminal.font: MesloLGS NF 14

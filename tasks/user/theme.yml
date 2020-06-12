@@ -34,3 +34,11 @@
     owner: "{{ my_username }}"
     group: "{{ my_username }}"
     mode: 0644
+
+- name: Adding Custom Xresource overrides
+  copy:
+    src: files/cfg/home/.config/regolith/Xresources
+    dest: "{{ my_home }}/.config/regolith/Xresources"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0644
