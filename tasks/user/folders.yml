@@ -15,3 +15,4 @@
     - "{{ my_home }}/snap/ncspot/current/.config/ncspot/"
     - "{{ my_home }}/.config/autostart/"
     - "{{ my_home }}/.local/share/backgrounds"
+    - "{{ my_home }}/.config/regolith/compton/"

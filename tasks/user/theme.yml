@@ -23,3 +23,14 @@
       key: "/org/gnome/desktop/background/picture-uri"
       value: "'file://{{ my_home }}/.local/share/backgrounds/nord.jpg'"
       state: present
+
+# Using a custom config due to terminal/Nvidia glitches.
+- name: Custom Picom Config (Nvidia Glitch)
+  tags:
+  - nvidia-compton-fix
+  copy:
+    src: files/cfg/home/.config/regolith/compton/config
+    dest: "{{ my_home }}/.config/regolith/compton/config"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0644
