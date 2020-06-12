@@ -3,3 +3,4 @@
 ! Must run to get new changes (or reboot)
 ! > regolith-look refresh
 gnome.terminal.font: MesloLGS NF 14
+gnome.wallpaper: ~/Pictures/Wallpapers/wal/nord.jpg

@@ -1,11 +1,3 @@
-- name: Placing Wallpaper
-  copy:
-    src: files/cfg/home/.local/share/backgrounds/nord.jpg
-    dest: "{{ my_home }}/.local/share/backgrounds/nord.jpg"
-    owner: "{{ my_username }}"
-    group: "{{ my_username }}"
-    mode: 0700
-
 # WHen updating to new look, must delete `~/.Xresources-regolith` first. Careful if any other customizastions end up in there.
 # Will not show up until reboot or you run `regolith-look refresh`
 - name: Set Regolith-look to Nord
