@@ -14,14 +14,6 @@
     group: "{{ my_username }}"
     mode: 0700
 
-- name: Placing Uncrustify CFG
-  copy:
-    src: files/cfg/home/.config/uncrustify.cfg
-    dest: "{{ my_home }}/.config/uncrustify.cfg"
-    owner: "{{ my_username }}"
-    group: "{{ my_username }}"
-    mode: 0700
-
 - name: Placing Ncspot CFG
   copy:
     src: files/cfg/home/snap/ncspot/current/.config/ncspot/config.toml
