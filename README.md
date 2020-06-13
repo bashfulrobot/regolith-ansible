@@ -53,3 +53,25 @@ There are two recommended custom Picom (Compton) settings. The fix drops a custo
 ## Configuration that differs from default behavior
 
 Any custom settings I have tweaked from default Regolith has a comment with "DK Custom". Do note that this is in Regolith configuration files, and not in system settings I configure through Ansible.
+
+## Available Tags
+
+### STATUS
+
+🚧 This tagging section is under review and testing (Work in Progress). I just wanted ot capture the data.
+
+You can run any exclusion or inclusion patten you wish based on tags.
+
+By default if you run the `ansible-playbook` command without any `--skip-tags` or `--tags`, every task will be run.
+
+### Which Tags are available?
+
+You can check out which tags are in use by running `ansible-playbook --connection=local --list-tags run.yml`. This will not make any changes to your system.
+
+### Tags
+
+* `laptop` - Tasks specific to a laptop install
+* `desktop` - Tasks specific to a desktop install
+* `Install-From-GitHub` - Mostly used to exclude the github installs when testing. Otherwise you can easily hit API limits.
+* `install-vala` - Installs packages to develop Vala applications. This currently does not include the GTK portions. I will likely break that out at some point.
+* `nvidia-compton-fix` - Modifies the default Compton config of Regolith to work a little better with Nvidia cards.
