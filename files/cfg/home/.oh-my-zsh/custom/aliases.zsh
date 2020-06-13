@@ -29,3 +29,5 @@ alias vpn-help="/usr/bin/firefox https://support.nordvpn.com/Connectivity/Linux/
 
 alias cat="batcat"
 alias cfg-update="$HOME/tmp/bashfulrobot-ansible/deploy.sh"
+
+alias editorconfig-init="cp $HOME/.config/editorconfig/.editorconfig ."
