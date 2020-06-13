@@ -31,3 +31,4 @@ alias cat="batcat"
 alias cfg-update="$HOME/tmp/bashfulrobot-ansible/deploy.sh"
 
 alias editorconfig-init="cp $HOME/.config/editorconfig/.editorconfig ."
+alias uncrustify-init="cp $HOME/.config/uncrustify/.uncrustify.cfg ."
