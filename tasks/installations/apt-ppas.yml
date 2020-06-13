@@ -5,6 +5,7 @@
     state: present
   with_items:
     - ppa:peek-developers/stable
+    - ppa:bashfulrobot/pop-theme
 
 - name: Add Canonical Partners PPA
   apt_repository:

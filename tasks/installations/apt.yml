@@ -119,6 +119,14 @@
       - regolith-look-nord
     state: present
 
+- name: Installing POP OS Theme
+  apt:
+    pkg:
+      - pop-fonts
+      - pop-gtk-theme
+      - pop-icon-theme
+      - pop-sound-theme
+
 - name: Installing Xmind - APT
   apt:
     deb: https://www.xmind.net/xmind/downloads/XMind-2020-for-Linux-amd-64bit-{{ xmind_version }}.deb
