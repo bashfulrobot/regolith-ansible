@@ -16,3 +16,5 @@
     - "{{ my_home }}/.config/autostart/"
     - "{{ my_home }}/.local/share/backgrounds"
     - "{{ my_home }}/.config/regolith/compton/"
+    - "{{ my_home }}/.config/editorconfig/"
+    - "{{ my_home }}/.config/uncrustify/"
