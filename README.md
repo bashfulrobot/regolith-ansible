@@ -64,7 +64,7 @@ You can run any exclusion or inclusion patten you wish based on tags.
 
 By default if you run the `ansible-playbook` command without any `--skip-tags` or `--tags`, every task will be run.
 
-### Which Tags are available
+### Which Tags are available?
 
 You can check out which tags are in use by running `ansible-playbook --connection=local --list-tags run.yml`. This will not make any changes to your system.
 
