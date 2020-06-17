@@ -10,7 +10,7 @@ cargo install exa
 cargo install ripgrep
 cargo install tokei
 cargo install procs
-cargo install fd
+cargo install fd-find
 
 # Suggested aliases
 # alias ls='exa'

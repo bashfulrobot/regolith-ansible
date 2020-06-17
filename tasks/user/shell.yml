@@ -78,6 +78,13 @@
         regexp: "^ZSH_THEME="
         line: "ZSH_THEME='powerlevel10k/powerlevel10k'"
 
+# - name: Placing Starship config for prompt
+#   copy:
+#     src: files/cfg/home/.config/starship.toml
+#     dest: "{{ my_home }}/.config/starship.toml"
+#     owner: "{{ my_username }}"
+#     group: "{{ my_username }}"
+
 - name: Placing general.zsh CFG
   copy:
         src: files/cfg/home/.oh-my-zsh/custom/general.zsh
