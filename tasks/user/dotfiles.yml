@@ -77,3 +77,11 @@
     owner: "{{ my_username }}"
     group: "{{ my_username }}"
     mode: 0700
+
+- name: Placing .hidden file (Clean home dir)
+  copy:
+    src: files/cfg/home/.hidden
+    dest: "{{ my_home }}/.hidden"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
