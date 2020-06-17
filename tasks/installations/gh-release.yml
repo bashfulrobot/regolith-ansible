@@ -67,3 +67,18 @@
 - name: Install Todoist .deb package from Github.
   apt:
     deb: https://github.com/KryDos/todoist-linux/releases/download/{{ todoist_version }}/Todoist_{{ todoist_version }}.0_amd64.deb
+
+- name: Get latest release version of DUST from GitHub
+  github_release:
+    user: bootandy
+    repo: dust
+    action: latest_release
+  register: dust_release
+- name: Download & Extract DUST Tgz
+  unarchive:
+    src: "https://github.com/bootandy/dust/releases/download/{{ dust_release.tag }}/dust-{{ dust_release.tag }}-x86_64-unknown-linux-gnu.tar.gz"
+    dest: /usr/local/bin
+    # Ditch the containing folder on extraction
+    extra_opts: [--strip-components=1]
+    remote_src: yes
+#   when: dust_release.changed
