@@ -21,14 +21,14 @@
     repo: deb https://repo.nordvpn.com/deb/nordvpn/debian stable main
     state: present
 
-- name: Add Brave APT signing Keys
-  apt_key:
-    url: https://brave-browser-apt-release.s3.brave.com/brave-core.asc
-    state: present
-- name: Add Brave Browser PPA
-  apt_repository:
-    repo: deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
-    state: present
+# - name: Add Brave APT signing Keys
+#   apt_key:
+#     url: https://brave-browser-apt-release.s3.brave.com/brave-core.asc
+#     state: present
+# - name: Add Brave Browser PPA
+#   apt_repository:
+#     repo: deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
+#     state: present
 
 - name: Add Tailscale APT signing Keys
   apt_key:
