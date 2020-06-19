@@ -34,3 +34,5 @@ alias editorconfig-init="cp $HOME/.config/editorconfig/.editorconfig ."
 alias uncrustify-init="cp $HOME/.config/uncrustify/.uncrustify.cfg ."
 
 alias oni2="${HOME}/Documents/bin/Onivim2-x86_64.AppImage"
+
+alias gen-passwd="${HOME}/Documents/bin/generate-passwd.sh"
