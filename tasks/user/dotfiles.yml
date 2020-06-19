@@ -85,3 +85,13 @@
     owner: "{{ my_username }}"
     group: "{{ my_username }}"
     mode: 0700
+
+- name: Placing gh-create-repo.sh
+  tags:
+  - laptop
+  copy:
+    src: files/cfg/usr/local/bin/gh-create-repo.sh
+    dest: "/usr/local/bin/gh-create-repo.sh"
+    owner: root
+    group: root
+    mode: 0755
