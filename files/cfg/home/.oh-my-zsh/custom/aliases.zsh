@@ -37,4 +37,4 @@ alias oni2="${HOME}/Documents/bin/Onivim2-x86_64.AppImage"
 
 alias gen-passwd="${HOME}/Documents/bin/generate-passwd.sh"
 
-alias gh-init="/usr/local/bin/gh-create-repo.sh"
+alias gh-init="/usr/local/bin/github-init-main.sh"
