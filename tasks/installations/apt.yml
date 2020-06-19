@@ -32,7 +32,7 @@
   apt:
     pkg:
       - nordvpn
-      - brave-browser
+    #   - brave-browser
       - tailscale
       - peek
     state: present
