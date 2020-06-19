@@ -87,11 +87,9 @@
     mode: 0700
 
 - name: Placing gh-create-repo.sh
-  tags:
-  - laptop
   copy:
-    src: files/cfg/usr/local/bin/gh-create-repo.sh
-    dest: "/usr/local/bin/gh-create-repo.sh"
+    src: files/cfg/usr/local/bin/github-init-main.sh
+    dest: "/usr/local/bin/github-init-main.sh"
     owner: root
     group: root
     mode: 0755

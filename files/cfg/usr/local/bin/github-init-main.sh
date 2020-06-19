@@ -2,26 +2,28 @@
 
 ME=$(basename "$0")
 
-function usage() {
-    echo "USAGE: $ME [REPO NAME] [REPO DESCRIPTION]"
+show-usage() {
+    echo "USAGE: $ME '[REPO NAME]' '[REPO DESCRIPTION]'"
     echo "exiting..."
     exit 1
 }
+
 if [ $# -eq 0 ]
   then
     echo "No arguments supplied"
-    usage()
+    show-usage
 fi
 
 if [ -z "$1" ]
   then
     echo "No repo name provided"
-    usage()
+    show-usage
 fi
+
 if [ -z "$2" ]
   then
     echo "No repo description provided"
-    usage()
+    show-usage
 fi
 
 
