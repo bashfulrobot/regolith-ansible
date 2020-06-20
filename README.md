@@ -2,24 +2,22 @@
 
 ## Summary
 
-This repo contain my ansible files that will configure Regolith linux on a laptop or desktop. It makes use to Ansible "tags" to skip the laptop specific configuration.
+This repo contain my ansible files that will configure Regolith linux on a laptop or desktop. It makes use to Ansible "tags" to configure laptop/desktop specific configuration.
 
 In the future, I may add more tags and run scenarios to pick and choose various use cases.
 
 ## Usage
 
-Tags are used with these commands to "exclude" tasks for a desktop, laptop, nvidia, etc. I found the lists to be much shorter to exclude vs include.
+Tags are used with these commands to "include" tasks for a desktop, laptop, nvidia, etc.
 
 Examples are: no battery indicator on a desktop panel vs one on a laptop panel.
-
-**Remember Tags are to EXCLUDE, not include.**
 
 To run this playbook use:
 
 ### Desktop
 
 ``` shell
-ansible-playbook --skip-tags "laptop,nvidia-compton-fix" --connection=local run.yml
+ansible-playbook --tags "untagged,desktop" --connection=local run.yml
 ```
 
 ### Desktop With NVidia
@@ -27,13 +25,13 @@ ansible-playbook --skip-tags "laptop,nvidia-compton-fix" --connection=local run.
 You can attmpt without this, but this command includes a fix for a terminal glitch I was having due to Nvidia/driver compatibility.
 
 ``` shell
-ansible-playbook --skip-tags "laptop" --connection=local run.yml
+ansible-playbook -tags "untagged,desktop,nvidia-compton-fix" --connection=local run.yml
 ```
 
 ### Laptop
 
 ``` shell
-ansible-playbook --skip-tags "desktop,nvidia-compton-fix" --connection=local run.yml
+ansible-playbook -tags "untagged,laptop" --connection=local run.yml
 ```
 
 ### Laptop With NVidia
@@ -41,7 +39,7 @@ ansible-playbook --skip-tags "desktop,nvidia-compton-fix" --connection=local run
 You can attmpt without this, but this command includes a fix for a terminal glitch I was having due to Nvidia/driver compatibility.
 
 ``` shell
-ansible-playbook --skip-tags "desktop" --connection=local run.yml
+ansible-playbook -tags "untagged,laptop,nvidia-compton-fix" --connection=local run.yml
 ```
 
 ## Nvidia Fix
@@ -68,10 +66,16 @@ By default if you run the `ansible-playbook` command without any `--skip-tags` o
 
 You can check out which tags are in use by running `ansible-playbook --connection=local --list-tags run.yml`. This will not make any changes to your system.
 
-### Tags
+### Testing Tags
 
-* `laptop` - Tasks specific to a laptop install
-* `desktop` - Tasks specific to a desktop install
-* `Install-From-GitHub` - Mostly used to exclude the github installs when testing. Otherwise you can easily hit API limits.
-* `install-vala` - Installs packages to develop Vala applications. This currently does not include the GTK portions. I will likely break that out at some point.
-* `nvidia-compton-fix` - Modifies the default Compton config of Regolith to work a little better with Nvidia cards.
+You can see which tasks would match in a dry tun with a command such as:
+
+``` shell
+ansible-playbook --list-tasks --tags "desktop" run.yml
+```
+
+or
+
+``` shell
+ansible-playbook --list-tasks --tags "untagged,desktop" run.yml
+```
