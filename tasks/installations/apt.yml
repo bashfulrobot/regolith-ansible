@@ -26,15 +26,20 @@
       - pavucontrol
       - preload
       - dex
+      - aptitude
     state: present
 
 - name: Installing 3rd Party (PPA) User Applications - APT
   apt:
     pkg:
       - nordvpn
-    #   - brave-browser
+      - brave-browser-nightly
       - tailscale
       - peek
+      - pop-fonts
+      - pop-sound-theme
+      - pop-icon-theme
+
     state: present
 
 - name: Installing Fonts - APT
@@ -119,14 +124,6 @@
       - regolith-look-nord
     state: present
 
-- name: Installing POP OS Theme
-  apt:
-    pkg:
-      - pop-fonts
-      - pop-gtk-theme
-      - pop-icon-theme
-      - pop-sound-theme
-
 - name: Installing Vala and Dependencies
   tags:
   - install-vala
@@ -136,7 +133,6 @@
       - valac
       - valadoc
       - meson
-
 
 - name: Installing Xmind - APT
   apt:
