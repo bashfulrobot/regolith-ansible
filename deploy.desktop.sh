@@ -5,6 +5,6 @@
 # read -p "Run play? [Enter] for yes, [Ctrl+c] for no."
 
 sudo ls >/dev/null
-ansible-playbook --skip-tags "laptop,nvidia-compton-fix" --connection=local run.yml
+ansible-playbook --tags "untagged,desktop,install-vala" --connection=local run.yml
 
 exit 0
