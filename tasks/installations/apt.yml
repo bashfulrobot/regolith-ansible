@@ -1,8 +1,9 @@
 # Replaced with flameshot and helper script
-- name: Removing gnome-screenshot - APT
+- name: Removing Unneeded package - APT
   apt:
     pkg:
       - gnome-screenshot
+      - firefox
     state: absent
 
 - name: Installing Services - APT
@@ -117,6 +118,14 @@
       - i3xrocks-battery
       - i3xrocks-temp
     state: present
+
+- name: Removing i3rocks Modules (Laptop) - APT
+  tags:
+  - laptop
+  apt:
+    pkg:
+      - i3xrocks-net-traffic
+    state: absent
 
 - name: Installing Regolith Looks - APT
   apt:
