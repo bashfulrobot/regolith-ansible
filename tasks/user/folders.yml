@@ -18,3 +18,4 @@
     - "{{ my_home }}/.config/regolith/compton/"
     - "{{ my_home }}/.config/editorconfig/"
     - "{{ my_home }}/.config/uncrustify/"
+    - "{{ my_home }}/tmp/ansible-state/"

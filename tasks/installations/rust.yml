@@ -1,0 +1,24 @@
+- name: Download Rust installer
+  get_url:
+    url: https://sh.rustup.rs
+    dest: "/tmp/rustup.sh"
+    mode: 0777
+
+- name: Install Rust
+  become: yes
+  become_user: "{{ my_username }}"
+  command: "/tmp/rustup.sh --profile default --default-toolchain stable -y"
+  args:
+    creates: "{{ my_home }}/tmp/ansible-state/rust-installed"
+
+- name: Install Rust Components
+  become: yes
+  become_user: "{{ my_username }}"
+  command: rustup component add rls-preview rust-analysis rust-src
+  args:
+    creates: "{{ my_home }}/tmp/ansible-state/rust-components-installed"
+
+- name: Remove rustup.sh (delete file)
+  file:
+    path: /tmp/rustup.sh
+    state: absent

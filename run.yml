@@ -9,6 +9,8 @@
   tasks:
     ### Update entire system
     - include: tasks/installations/update-system.yml
+    ### Create folders
+    - include: tasks/user/folders.yml
     ### Install Software
     - include: tasks/installations/apt-ppas.yml
     - include: tasks/installations/apt-dependencies.yml
@@ -21,6 +23,7 @@
     # This must come after the pip.yml due to dependencies
     - include: tasks/installations/gh-release.yml
     - include: tasks/installations/screenshot.yml
+    - include: tasks/installations/rust.yml
     ### System Settings
     - include: tasks/syscfg/sudo.yml
     - include: tasks/syscfg/sysctl.yml
@@ -30,10 +33,10 @@
     - include: tasks/syscfg/ufw.yml
     ### User Cfg
     - include: tasks/user/users.yml
-    - include: tasks/user/folders.yml
     - include: tasks/user/dotfiles.yml
     - include: tasks/user/startup.yml
     - include: tasks/user/cron.yml
+    # Depends on rust
     - include: tasks/user/shell.yml
     - include: tasks/user/dconf.yml
     - include: tasks/user/permissions.yml

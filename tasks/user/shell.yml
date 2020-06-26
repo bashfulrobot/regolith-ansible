@@ -1,156 +1,61 @@
-- name: Installing ZSH Shell
+- name: Installing Fish Shell
   apt:
     pkg:
       - git
-      - zsh
+      - fish
       - fonts-powerline
       - powerline
     state: present
-  register: install_zsh
+  register: install_fish
 
 - name: Change current user shell
   user:
         name: "{{ my_username }}"
-        shell: /usr/bin/zsh
+        shell: /usr/bin/fish
   become: yes
 
-- name: Clone oh-my-zsh
-  git:
-      repo: https://github.com/robbyrussell/oh-my-zsh.git
-      dest: "{{ my_home }}/.oh-my-zsh"
-      update: no
-  become: no
-  register: omz_clone
+- name: Get latest release version of Starship.rs from GitHub
+  github_release:
+    user: starship
+    repo: starship
+    action: latest_release
+  register: starship_release
+- name: Download & Extract Starship.rs Tgz
+  unarchive:
+    src: "https://github.com/starship/starship/releases/download/{{ starship_release.tag }}/starship-x86_64-unknown-linux-gnu.tar.gz"
+    dest: /usr/local/bin
+    # Ditch the containing folder on extraction
+    extra_opts: [--strip-components=1]
+    remote_src: yes
+#   when: cod_release.changed
 
-- name: Clone zsh-autosuggestions
-  git:
-        repo: https://github.com/zsh-users/zsh-autosuggestions.git
-        dest: "{{ my_home }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
-        update: yes
-
-- name: Clone zsh-history-substring-search
-  git:
-        repo: https://github.com/zsh-users/zsh-history-substring-search.git
-        dest: "{{ my_home }}/.oh-my-zsh/custom/plugins/zsh-history-substring-search"
-        update: yes
-
-- name: Clone zsh-syntax-highlighting
-  git:
-        repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
-        dest: "{{ my_home }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
-        update: yes
-
-- name: Clone powerlevel10k Theme
-  git:
-        repo: https://github.com/romkatv/powerlevel10k.git
-        dest: "{{ my_home }}/.oh-my-zsh/custom/themes/powerlevel10k"
-        update: yes
-
-- name: Clone zsh-z
-  git:
-        repo: https://github.com/agkozak/zsh-z.git
-        dest: "{{ my_home }}/.oh-my-zsh/custom/plugins/zsh-z"
-        update: yes
-
-- name: check if .zshrc exists
-  when: install_zsh is success
-  stat:
-        path: "{{ my_home }}/.zshrc"
-  register: zshrc
-
-- name: back up existing .zshrc file if it exists
-  when: zshrc.stat.exists
+- name: Placing Starship config for prompt
   copy:
-        src: "{{ my_home }}/.zshrc"
-        dest: "{{ my_home }}/.zshrc-orig"
+    src: files/cfg/home/.config/starship.toml
+    dest: "{{ my_home }}/.config/starship.toml"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
 
-- name: Creating new ~/.zshrc
+- name: Placing config.fish dotfile
   copy:
-        src: "{{ my_home }}/.oh-my-zsh/templates/zshrc.zsh-template"
-        dest: "{{ my_home }}/.zshrc"
-  when: omz_clone is success
-  become: no
-  register: created_zshrc
+    src: files/cfg/home/.config/fish/config.fish
+    dest: "{{ my_home }}/.config/fish/config.fish"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
 
-- name: Enable 10k theme in ZSH
-  lineinfile:
-        path: "{{ my_home }}/.zshrc"
-        regexp: "^ZSH_THEME="
-        line: "ZSH_THEME='powerlevel10k/powerlevel10k'"
+- name: Placing env.fish dotfile
+  copy:
+    src: files/cfg/home/.config/fish/conf.d/env.fish
+    dest: "{{ my_home }}/.config/fish/conf.d/env.fish"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
 
-# - name: Placing Starship config for prompt
+# - name: Placing aws-cli.zsh CFG
 #   copy:
-#     src: files/cfg/home/.config/starship.toml
-#     dest: "{{ my_home }}/.config/starship.toml"
-#     owner: "{{ my_username }}"
-#     group: "{{ my_username }}"
-
-- name: Placing general.zsh CFG
-  copy:
-        src: files/cfg/home/.oh-my-zsh/custom/general.zsh
-        dest: "{{ my_home }}/.oh-my-zsh/custom/general.zsh"
-        owner: "{{ my_username }}"
-        group: "{{ my_username }}"
-
-- name: Placing plugins.zsh CFG
-  copy:
-        src: files/cfg/home/.oh-my-zsh/custom/plugins.zsh
-        dest: "{{ my_home }}/.oh-my-zsh/custom/plugins.zsh"
-        owner: "{{ my_username }}"
-        group: "{{ my_username }}"
-
-- name: Placing aliases.zsh CFG
-  copy:
-        src: files/cfg/home/.oh-my-zsh/custom/aliases.zsh
-        dest: "{{ my_home }}/.oh-my-zsh/custom/aliases.zsh"
-        owner: "{{ my_username }}"
-        group: "{{ my_username }}"
-
-- name: Placing functions.zsh CFG
-  copy:
-        src: files/cfg/home/.oh-my-zsh/custom/functions.zsh
-        dest: "{{ my_home }}/.oh-my-zsh/custom/functions.zsh"
-        owner: "{{ my_username }}"
-        group: "{{ my_username }}"
-
-- name: Placing path.zsh CFG
-  copy:
-        src: files/cfg/home/.oh-my-zsh/custom/path.zsh
-        dest: "{{ my_home }}/.oh-my-zsh/custom/path.zsh"
-        owner: "{{ my_username }}"
-        group: "{{ my_username }}"
-
-- name: Placing util-functions.zsh CFG
-  copy:
-        src: files/cfg/home/.oh-my-zsh/custom/util-functions.zsh
-        dest: "{{ my_home }}/.oh-my-zsh/custom/util-functions.zsh"
-        owner: "{{ my_username }}"
-        group: "{{ my_username }}"
-
-- name: Placing prompt.zsh CFG
-  copy:
-        src: files/cfg/home/.oh-my-zsh/custom/prompt.zsh
-        dest: "{{ my_home }}/.oh-my-zsh/custom/prompt.zsh"
-        owner: "{{ my_username }}"
-        group: "{{ my_username }}"
-
-- name: Placing .p10k.zsh CFG
-  copy:
-        src: files/cfg/home/.p10k.zsh
-        dest: "{{ my_home }}/.p10k.zsh"
-        owner: "{{ my_username }}"
-        group: "{{ my_username }}"
-
-- name: Placing cheatsheets.zsh CFG
-  copy:
-        src: files/cfg/home/.oh-my-zsh/custom/cheatsheets.zsh
-        dest: "{{ my_home }}/.oh-my-zsh/custom/cheatsheets.zsh"
-        owner: "{{ my_username }}"
-        group: "{{ my_username }}"
-
-- name: Placing aws-cli.zsh CFG
-  copy:
-        src: files/cfg/home/.oh-my-zsh/custom/aws-cli.zsh
-        dest: "{{ my_home }}/.oh-my-zsh/custom/aws-cli.zsh"
-        owner: "{{ my_username }}"
-        group: "{{ my_username }}"
+#         src: files/cfg/home/.oh-my-zsh/custom/aws-cli.zsh
+#         dest: "{{ my_home }}/.oh-my-zsh/custom/aws-cli.zsh"
+#         owner: "{{ my_username }}"
+#         group: "{{ my_username }}"
