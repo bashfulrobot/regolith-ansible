@@ -12,7 +12,6 @@
           - scrcpy
           - glimpse-editor
           - telegram-desktop
-          - yakyak
           - pick-colour-picker
 
 - name: Install Classic Snap Packages
@@ -23,7 +22,6 @@
           - snapdiff
           - slack
           - code-insiders
-          - slack
       classic: yes
 
 - name: Install Node Snap Package --channel=13/stable --classic

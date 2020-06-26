@@ -12,7 +12,6 @@
       - snapd
       - openssh-server
       - profile-sync-daemon
-      - lxd
     state: present
 
 - name: Installing System Packages - APT
