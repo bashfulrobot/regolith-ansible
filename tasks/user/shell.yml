@@ -27,7 +27,7 @@
     # Ditch the containing folder on extraction
     extra_opts: [--strip-components=1]
     remote_src: yes
-#   when: cod_release.changed
+#   when: starship_release.changed
 
 - name: Placing Starship config for prompt
   copy:
