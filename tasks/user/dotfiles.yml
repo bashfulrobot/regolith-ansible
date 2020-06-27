@@ -93,3 +93,11 @@
     owner: root
     group: root
     mode: 0755
+
+- name: Placing .screenlayout/desktop.sh
+  copy:
+    src: files/cfg/home/.screenlayout/desktop.sh
+    dest: "{{ my_home }}/.screenlayout/desktop.sh"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
