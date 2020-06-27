@@ -21,3 +21,11 @@
     owner: "{{ my_username }}"
     group: "{{ my_username }}"
     mode: 0644
+
+- name: Placing Xrandr autostart
+  copy:
+    src: files/cfg/home/.config/autostart/xrandr.desktop
+    dest: "/home/{{ my_username }}/.config/autostart/xrandr.desktop"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0644
