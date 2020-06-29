@@ -4,3 +4,9 @@ add_newline = true
 # prompt_order=["rust","line_break","package","line_break","character"]
 # Wait 10 milliseconds for starship to check files under the current directory.
 scan_timeout = 10
+
+[aws]
+displayed_items = "all"
+[aws.region_aliases]
+ca-central-1 = "CA1"
+us-west-2 = "USW2"

@@ -45,10 +45,26 @@
     group: "{{ my_username }}"
     mode: 0700
 
-- name: Placing env.fish dotfile
+- name: Placing env.fish file
   copy:
     src: files/cfg/home/.config/fish/conf.d/env.fish
     dest: "{{ my_home }}/.config/fish/conf.d/env.fish"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
+
+- name: Placing alacritty.fish file
+  copy:
+    src: files/cfg/home/.config/fish/conf.d/alacritty.fish
+    dest: "{{ my_home }}/.config/fish/conf.d/alacritty.fish"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
+
+- name: Placing alacritty.yml file
+  copy:
+    src: files/cfg/home/.config/alacritty/alacritty.yml
+    dest: "{{ my_home }}/.config/alacritty/alacritty.yml"
     owner: "{{ my_username }}"
     group: "{{ my_username }}"
     mode: 0700

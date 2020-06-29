@@ -6,6 +6,7 @@
   with_items:
     - ppa:peek-developers/stable
     - ppa:bashfulrobot/pop-theme
+    - ppa:mmstick76/alacritty
 
 - name: Add Canonical Partners PPA
   apt_repository:

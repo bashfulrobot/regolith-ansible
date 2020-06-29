@@ -27,6 +27,7 @@
       - preload
       - dex
       - aptitude
+      - alacritty
     state: present
 
 - name: Installing 3rd Party (PPA) User Applications - APT
