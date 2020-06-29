@@ -69,6 +69,21 @@
     group: "{{ my_username }}"
     mode: 0700
 
+- name: Placing aliases.fish file
+  copy:
+    src: files/cfg/home/.config/fish/conf.d/aliases.fish
+    dest: "{{ my_home }}/.config/fish/conf.d/aliases.fish"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
+
+- name: Placing functions.fish file
+  copy:
+    src: files/cfg/home/.config/fish/conf.d/functions.fish
+    dest: "{{ my_home }}/.config/fish/conf.d/functions.fish"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
 # - name: Placing aws-cli.zsh CFG
 #   copy:
 #         src: files/cfg/home/.oh-my-zsh/custom/aws-cli.zsh
