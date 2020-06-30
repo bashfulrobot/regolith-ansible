@@ -37,30 +37,6 @@
     group: "{{ my_username }}"
     mode: 0700
 
-- name: Placing config.fish dotfile
-  copy:
-    src: files/cfg/home/.config/fish/config.fish
-    dest: "{{ my_home }}/.config/fish/config.fish"
-    owner: "{{ my_username }}"
-    group: "{{ my_username }}"
-    mode: 0700
-
-- name: Placing env.fish file
-  copy:
-    src: files/cfg/home/.config/fish/conf.d/env.fish
-    dest: "{{ my_home }}/.config/fish/conf.d/env.fish"
-    owner: "{{ my_username }}"
-    group: "{{ my_username }}"
-    mode: 0700
-
-- name: Placing alacritty.fish file
-  copy:
-    src: files/cfg/home/.config/fish/conf.d/alacritty.fish
-    dest: "{{ my_home }}/.config/fish/conf.d/alacritty.fish"
-    owner: "{{ my_username }}"
-    group: "{{ my_username }}"
-    mode: 0700
-
 - name: Placing alacritty.yml file
   copy:
     src: files/cfg/home/.config/alacritty/alacritty.yml
@@ -69,26 +45,12 @@
     group: "{{ my_username }}"
     mode: 0700
 
-- name: Placing aliases.fish file
+- name: Placing fish files
+  tags:
+    - fish
   copy:
-    src: files/cfg/home/.config/fish/conf.d/aliases.fish
-    dest: "{{ my_home }}/.config/fish/conf.d/aliases.fish"
-    owner: "{{ my_username }}"
-    group: "{{ my_username }}"
-    mode: 0700
-
-- name: Placing functions.fish file
-  copy:
-    src: files/cfg/home/.config/fish/conf.d/functions.fish
-    dest: "{{ my_home }}/.config/fish/conf.d/functions.fish"
-    owner: "{{ my_username }}"
-    group: "{{ my_username }}"
-    mode: 0700
-
-- name: Placing util-functions.fish file
-  copy:
-    src: files/cfg/home/.config/fish/conf.d/util-functions.fish
-    dest: "{{ my_home }}/.config/fish/conf.d/util-functions.fish"
+    src: files/cfg/home/.config/fish
+    dest: "{{ my_home }}/.config"
     owner: "{{ my_username }}"
     group: "{{ my_username }}"
     mode: 0700
