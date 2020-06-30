@@ -13,9 +13,9 @@
 # Note - you will want to quote your description, etc.
 
 ####### Configure <====
-GITHUB_USERNAME="bashfulrobot"
+GITHUB_USERNAME="SETME"
 # Where your repo will be created
-WORKING_DIR="${HOME}/tmp"
+WORKING_DIR="${HOME}/SETME"
 
 ### Main
 ME=$(basename "$0")
@@ -28,12 +28,12 @@ show-usage() {
 }
 
 # Check for default GitHub user values and notify the user to setup.
-if [ "$GITHUB_USERNAME" == "bashfulrobot" ]; then
+if [ "$GITHUB_USERNAME" == "SETME" ]; then
     echo "It looks like you have not configured your GitHub user yet."
     exit 1
 fi
 # Check for default working directory values and notify the user to setup.
-if [ "$WORKING_DIR" == "${HOME}/tmp" ]; then
+if [ "$WORKING_DIR" == "${HOME}/SETME" ]; then
     echo "It looks like you have not configured the working directory yet."
     exit 1
 fi
