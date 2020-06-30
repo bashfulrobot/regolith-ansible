@@ -1,33 +1,81 @@
-alias pcp='rsync -aP'
+function pcp
+    rsync -aP $argv
+end
 
-alias er='code-insiders -r'
-alias e='code-insiders'
-alias e-root='code-insiders --user-data-dir="~/.vscode-insiders/"'
+function er
+    code-insiders -r $argv
+end
 
-alias opermissions="stat -c '%A %a %n'"
-alias octperm="stat -c '%A %a %n'"
+function e
+    code-insiders $argv
+end
 
-alias espanso-list="cat $HOME/.config/espanso/default.yml | grep trigger | cut -d ' ' -f5 | less"
+function e-root
+    code-insiders --user-data-dir=`~/.code-insiders/` $argv
+end
 
-alias vpn-login="/usr/bin/nordvpn login"
-alias vpn-logout="/usr/bin/nordvpn logout"
-alias vpn-up="/usr/bin/nordvpn connect"
-alias vpn-down="/usr/bin/nordvpn disconnect"
-alias vpn-countries="/usr/bin/nordvpn countries"
-alias vpn-cities="/usr/bin/nordvpn cities"
-alias vpn-settings="/usr/bin/nordvpn settings"
-alias vpn-status="/usr/bin/nordvpn status"
-alias vpn-account="/usr/bin/nordvpn account"
-alias vpn-help="/usr/bin/firefox https://support.nordvpn.com/Connectivity/Linux/1325531132/Installing-and-using-NordVPN-on-Debian-Ubuntu-and-Linux-Mint.htm"
+function opermissions
+    stat -c '%A %a %n' $argv
+end
 
-alias cat="batcat"
-alias cfg-update="$HOME/tmp/bashfulrobot-ansible/deploy.sh"
+function octperm
+    stat -c '%A %a %n'
+end
 
-alias editorconfig-init="cp $HOME/.config/editorconfig/.editorconfig ."
-alias uncrustify-init="cp $HOME/.config/uncrustify/.uncrustify.cfg ."
+function espanso-list
+    cat $HOME/.config/espanso/default.yml | grep trigger | cut -d ' ' -f5 | less
+end
 
-alias oni2="$HOME/Documents/bin/Onivim2-x86_64.AppImage"
+function vpn-login
+    /usr/bin/nordvpn login
+end
+function vpn-logout
+    /usr/bin/nordvpn logout
+end
+function vpn-up
+    /usr/bin/nordvpn connect
+end
+function vpn-down
+    /usr/bin/nordvpn disconnect
+end
+function vpn-countries
+    /usr/bin/nordvpn countries
+end
+function vpn-cities
+    /usr/bin/nordvpn cities
+end
+function vpn-settings
+    /usr/bin/nordvpn settings
+end
+function vpn-status
+    /usr/bin/nordvpn status
+end
+function vpn-account
+    /usr/bin/nordvpn account
+end
+function vpn-help
+    /usr/bin/brave-browser-nightly https://support.nordvpn.com/Connectivity/Linux/1325531132/Installing-and-using-NordVPN-on-Debian-Ubuntu-and-Linux-Mint.htm
+end
 
-alias gen-passwd="$HOME/Documents/bin/generate-passwd.sh"
+function cat
+    batcat $argv
+end
 
-alias gh-init="/usr/local/bin/github-init-main.sh"
+function editorconfig-init
+    cp $HOME/.config/editorconfig/.editorconfig .
+end
+function uncrustify-init
+    cp $HOME/.config/uncrustify/.uncrustify.cfg .
+end
+
+function oni2
+    $HOME/Documents/bin/Onivim2-x86_64.AppImage
+end
+
+function gen-passwd
+    $HOME/Documents/bin/generate-passwd.sh
+end
+
+function gh-init
+    /usr/local/bin/github-init-main.sh
+end
