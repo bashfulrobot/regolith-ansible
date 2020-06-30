@@ -3,5 +3,5 @@ function myint
 end
 
 function catclip
-    cat $1 | xclip -i -selection clipboard
+    /usr/bin/cat $1 | xclip -i -selection clipboard
 end
