@@ -1,18 +1,3 @@
-- name: Get latest release version of COD from GitHub
-  github_release:
-    user: dim-an
-    repo: cod
-    action: latest_release
-  register: cod_release
-- name: Download & Extract COD Tgz #noqa 503
-  unarchive:
-    src: "https://github.com/dim-an/cod/releases/download/{{ cod_release.tag }}/cod-Linux.tgz"
-    dest: /usr/local/bin
-    # Ditch the containing folder on extraction
-    extra_opts: [--strip-components=1]
-    remote_src: yes
-#   when: cod_release.changed
-
 - name: Get latest release version of comics-downloader from GitHub
   github_release:
     user: Girbons
@@ -55,19 +40,6 @@
   apt:
     deb: https://github.com/cli/cli/releases/download/{{ gh_cli_release.tag }}/gh_{{ gh_cli_version }}_linux_amd64.deb
 
-- name: Get latest release version of Todoist from GitHub
-  github_release:
-    user: KryDos
-    repo: todoist-linux
-    action: latest_release
-  register: todoist_release
-- name: Get Todoist version number w/o V
-  set_fact:
-    todoist_version: "{{ todoist_release.tag | regex_replace('^v', '') }}"
-- name: Install Todoist .deb package from Github.
-  apt:
-    deb: https://github.com/KryDos/todoist-linux/releases/download/{{ todoist_version }}/Todoist_{{ todoist_version }}.0_amd64.deb
-
 - name: Get latest release version of DUST from GitHub
   github_release:
     user: bootandy
@@ -82,18 +54,3 @@
     extra_opts: [--strip-components=1]
     remote_src: yes
 #   when: dust_release.changed
-
-# - name: Get latest release version of Starship from GitHub
-#   github_release:
-#     user: starship
-#     repo: starship
-#     action: latest_release
-#   register: starship_release
-# - name: Download & Extract Starship Tgz
-#   unarchive:
-#     src: "https://github.com/starship/starship/releases/download/{{ starship_release.tag }}/starship-x86_64-unknown-linux-gnu.tar.gz"
-#     dest: /usr/local/bin
-#     # Ditch the containing folder on extraction
-#     extra_opts: [--strip-components=1]
-#     remote_src: yes
-# #   when: starship_release.changed
