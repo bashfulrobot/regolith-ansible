@@ -46,8 +46,6 @@
     mode: 0700
 
 - name: Placing fish files
-  tags:
-    - fish
   copy:
     src: files/cfg/home/.config/fish
     dest: "{{ my_home }}/.config"
