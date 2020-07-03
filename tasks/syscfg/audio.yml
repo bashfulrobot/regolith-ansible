@@ -1,0 +1,5 @@
+- name: Disable module-switch-on-connect in /etc/pulse/default.pa
+  lineinfile:
+    path: /etc/pulse/default.pa
+    regexp: '^\s*load-module module-switch-on-connect'
+    line: '#load-module module-switch-on-connect'

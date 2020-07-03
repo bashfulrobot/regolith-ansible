@@ -31,6 +31,7 @@
     - include: tasks/syscfg/services.yml
     - include: tasks/syscfg/timezone.yml
     - include: tasks/syscfg/ufw.yml
+    - include: tasks/syscfg/audio.yml
     ### User Cfg
     - include: tasks/user/users.yml
     - include: tasks/user/dotfiles.yml
