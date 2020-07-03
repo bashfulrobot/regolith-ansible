@@ -8,7 +8,7 @@
 # https://wiki.archlinux.org/index.php/PulseAudio/Examples#Set_default_input_source
 - name: Add a line to /etc/pulse/default.pa setting audio profile
   tags:
-  - pulse
+  - desktop
   lineinfile:
     path: /etc/pulse/default.pa
     line: set-card-profile alsa_card.usb-Blue_Microphones_Yeti_Stereo_Microphone_REV8-00 output:iec958-stereo+input:iec958-stereo
@@ -16,7 +16,7 @@
 
 - name: Set default output in /etc/pulse/default.pa
   tags:
-  - pulse
+  - desktop
   lineinfile:
     path: /etc/pulse/default.pa
     line: set-default-sink alsa_output.usb-Blue_Microphones_Yeti_Stereo_Microphone_REV8-00.iec958-stereo
@@ -25,7 +25,7 @@
 # If you do not want moditor input, drop the "monito" in the name. Can confirm with below commands
 - name: Set default input in /etc/pulse/default.pa
   tags:
-  - pulse
+  - desktop
   lineinfile:
     path: /etc/pulse/default.pa
     line: set-default-source alsa_output.usb-Blue_Microphones_Yeti_Stereo_Microphone_REV8-00.iec958-stereo.monitor
