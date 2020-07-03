@@ -3,3 +3,41 @@
     path: /etc/pulse/default.pa
     regexp: '^\s*load-module module-switch-on-connect'
     line: '#load-module module-switch-on-connect'
+
+# https://unix.stackexchange.com/questions/462670/set-default-profile-for-pulseaudio
+# https://wiki.archlinux.org/index.php/PulseAudio/Examples#Set_default_input_source
+- name: Add a line to /etc/pulse/default.pa setting audio profile
+  tags:
+  - pulse
+  lineinfile:
+    path: /etc/pulse/default.pa
+    line: set-card-profile alsa_card.usb-Blue_Microphones_Yeti_Stereo_Microphone_REV8-00 output:iec958-stereo+input:iec958-stereo
+    create: yes
+
+- name: Set default output in /etc/pulse/default.pa
+  tags:
+  - pulse
+  lineinfile:
+    path: /etc/pulse/default.pa
+    line: set-default-sink alsa_output.usb-Blue_Microphones_Yeti_Stereo_Microphone_REV8-00.iec958-stereo
+    create: yes
+
+# If you do not want moditor input, drop the "monito" in the name. Can confirm with below commands
+- name: Set default input in /etc/pulse/default.pa
+  tags:
+  - pulse
+  lineinfile:
+    path: /etc/pulse/default.pa
+    line: set-default-source alsa_output.usb-Blue_Microphones_Yeti_Stereo_Microphone_REV8-00.iec958-stereo.monitor
+    create: yes
+
+# List outputs
+# $ pacmd list-sinks | grep -e 'name:' -e 'index:'
+
+# List inputs
+# $ pacmd list-sources | grep -e 'index:' -e device.string -e 'name:'
+
+# $ pacmd list-cards | less
+# index 2
+# $ pacmd list-cards | grep 'active profile'
+# output:iec958-stereo+input:iec958-stereo
