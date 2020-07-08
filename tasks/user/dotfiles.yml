@@ -101,3 +101,11 @@
     owner: "{{ my_username }}"
     group: "{{ my_username }}"
     mode: 0700
+
+- name: Placing picgo CFG
+  copy:
+    src: files/cfg/home/.picgo/config.json
+    dest: "{{ my_home }}/.picgo/config.json"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700

@@ -1,0 +1,10 @@
+{
+    "picBed": {
+        "current": "imgur",
+        "imgur": {
+            "clientId": "SEE BITWARDEN",
+            "proxy": ""
+        }
+    },
+    "picgoPlugins": {}
+}
