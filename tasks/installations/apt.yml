@@ -48,6 +48,7 @@
     pkg:
       - ttf-mscorefonts-installer
       - fonts-emojione
+      - fonts-crosextra-carlito
     state: present
 
 - name: Installing Logitech Support - APT
