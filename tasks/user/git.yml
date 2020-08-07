@@ -1,0 +1,23 @@
+- name: set git config - gpg signing key
+  git_config:
+    name: user.signingkey
+    scope: global
+    value: 13A72DEF6C9670B7
+
+- name: set git config - always sign gpg
+  git_config:
+    name: commit.gpgsign
+    scope: global
+    value: true
+
+- name: set git config - name
+  git_config:
+    name: user.name
+    scope: global
+    value: bashfulrobot
+
+- name: set git config - email
+  git_config:
+    name: user.email
+    scope: global
+    value: dustin@bashfulrobot.com

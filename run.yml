@@ -39,6 +39,7 @@
     - include: tasks/user/cron.yml
     # Depends on rust
     - include: tasks/user/shell.yml
+    - include: tasks/user/git.yml
     - include: tasks/user/dconf.yml
     - include: tasks/user/permissions.yml
     - include: tasks/user/theme.yml
