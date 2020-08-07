@@ -81,6 +81,7 @@
       - bat
       - seahorse
       - sirikali
+      - pass
     state: present
 
 - name: Installing Developer Tools - APT
