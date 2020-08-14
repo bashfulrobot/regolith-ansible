@@ -4,6 +4,7 @@
     pkg:
       - gnome-screenshot
       - firefox
+      - regolith-rofication
     state: absent
 
 - name: Installing Services - APT
@@ -28,6 +29,7 @@
       - dex
       - aptitude
       - alacritty
+      - dunst
     state: present
 
 - name: Installing 3rd Party (PPA) User Applications - APT

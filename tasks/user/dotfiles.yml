@@ -46,6 +46,14 @@
     group: "{{ my_username }}"
     mode: 0700
 
+- name: Placing dunstrc
+  copy:
+    src: files/cfg/home/.config/dunst/dunstrc
+    dest: "{{ my_home }}/.config/dunst/dunstrc"
+    owner: "{{ my_username }}"
+    group: "{{ my_username }}"
+    mode: 0700
+
 - name: Placing .vimrc
   copy:
     src: files/cfg/home/.vimrc
