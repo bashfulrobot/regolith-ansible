@@ -30,6 +30,7 @@
       - aptitude
       - alacritty
       - dunst
+      - stacer
     state: present
 
 - name: Installing 3rd Party (PPA) User Applications - APT
