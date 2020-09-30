@@ -13,6 +13,7 @@
           - glimpse-editor
           - telegram-desktop
           - pick-colour-picker
+          - beekeeper-studio
 
 - name: Install Classic Snap Packages
   snap:
